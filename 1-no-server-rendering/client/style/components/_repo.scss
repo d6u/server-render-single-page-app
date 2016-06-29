@@ -1,0 +1,50 @@
+.repo {
+  $padding: 20px;
+
+  margin-top: 20px;
+  margin-right: 20px;
+  overflow: hidden;
+  border: 1px solid #E5E5E5;
+  border-radius: 4px;
+  padding: $padding;
+  line-height: 1.5;
+  width: 270px;
+
+  @at-root {
+    .repo__full-name {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      color: #4A90E2;
+      font-size: 16px;
+      line-height: 19px;
+    }
+
+    .repo__name-link {
+      text-decoration: none;
+      white-space: nowrap;
+      &:hover {
+        .repo__repo-name {
+          color: #4A90E2;
+        }
+      }
+    }
+
+    .repo__repo-name {
+      color: #333333;
+      font-weight: 700;
+    }
+
+    .repo__author-name {
+      color: #888888;
+    }
+
+    .repo__desc {
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 18px;
+      color: #666666;
+      word-break: break-word;
+    }
+
+  }
+}
