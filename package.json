@@ -19,11 +19,9 @@
   "homepage": "https://github.com/d6u/server-render-single-page-app#readme",
   "devDependencies": {
     "babel-loader": "6.2.4",
+    "lodash": "4.13.1",
     "node-sass": "3.8.0",
     "nodemon": "1.9.2",
-    "react-redux": "4.4.5",
-    "react-router": "2.5.1",
-    "redux": "3.5.2",
     "webpack": "1.13.1",
     "whatwg-fetch": "1.0.0"
   },
@@ -36,6 +34,10 @@
     "ejs": "2.4.2",
     "express": "4.14.0",
     "react": "15.1.0",
-    "react-dom": "15.1.0"
+    "react-dom": "15.1.0",
+    "react-redux": "4.4.5",
+    "react-router": "2.5.1",
+    "redux": "3.5.2",
+    "redux-thunk": "2.1.0"
   }
 }

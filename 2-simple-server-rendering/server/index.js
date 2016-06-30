@@ -14,7 +14,7 @@ app.use(express.static(join(__dirname, '../public')));
 
 app.get('/', function (req, res) {
   Promise
-    .all([getTemplate(), Data.findRepos(10), Data.findTags()])
+    .all([getTemplate(), Data.findRepos(20), Data.findTags()])
     .then(([template, repos, tags]) => {
       res.send(ejs.render(template, {
         content: renderToString(<App repos={repos} tags={tags}/>),
