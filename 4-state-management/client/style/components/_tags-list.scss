@@ -1,0 +1,24 @@
+.tags-list {
+  overflow: auto;
+  padding: 30px;
+  background-color: #F9F9F9;
+  border-right: 1px solid #E5E5E5;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+
+  @at-root {
+    .tags-list__tag {
+      $height: 26px;
+
+      height: $height;
+      border-radius: ($height / 2);
+      padding: 6px 8px;
+      margin-bottom: 5px;
+      margin-right: 5px;
+      background-color: #DBDDDE;
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+}

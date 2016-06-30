@@ -1,0 +1,32 @@
+#app {
+  height: 100vh;
+  width: 100vw;
+
+  @at-root {
+    .app__inside {
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .app__nav {
+      flex-basis: $side-bar-width;
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+
+    .app__tags {
+      flex-basis: $tags-list-width;
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+
+    .app__repos {
+      flex-grow: 1;
+    }
+
+    .app__user {
+      flex-grow: 1;
+    }
+  }
+}

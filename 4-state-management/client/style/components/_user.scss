@@ -1,0 +1,12 @@
+.user {
+  padding: 40px;
+
+  @at-root {
+    .user__profile-pic {
+      width: 300px;
+      margin-bottom: 20px;
+    }
+
+    .user__display-name {}
+  }
+}

@@ -1,0 +1,12 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Server Rendering</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="app"><%- content %></div>
+  <script>window.__data__ = <%- __data__ %>;</script>
+  <script src="/index.js"></script>
+</body>
+</html>
