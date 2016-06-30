@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
 import 'whatwg-fetch';
-import App from './components/App';
+import routes from './components/routes';
 
-render(<App/>, document.getElementById('app'));
+render(routes, document.getElementById('app'));

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, IndexRoute, Redirect} from 'react-router'
+import {Router, Route, IndexRoute, Redirect, browserHistory} from 'react-router';
 import NavBar from './NavBar';
 import TagsList from './TagsList';
 import ReposList from './ReposList';
@@ -33,9 +33,11 @@ class UserProfile extends Component {
 }
 
 export default (
-  <Route path='/'>
-    <IndexRoute component={Dashboard}/>
-    <Route path='user' component={UserProfile}/>
-    <Redirect from='other' to='/'/>
-  </Route>
+  <Router history={browserHistory}>
+    <Route path='/'>
+      <IndexRoute component={Dashboard}/>
+      <Route path='user' component={UserProfile}/>
+      <Redirect from='other' to='/'/>
+    </Route>
+  </Router>
 );
