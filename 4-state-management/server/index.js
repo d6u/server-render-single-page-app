@@ -10,7 +10,7 @@ const app = express();
 app.use(express.static(join(__dirname, '../public')));
 
 app.get('/repos.json', function (req, res) {
-  Data.findRepos().then(function (repos) {
+  Data.findRepos(100).then(function (repos) {
     res.send(repos);
   });
 });

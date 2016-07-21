@@ -16,15 +16,17 @@ app.get('/', function (req, res) {
   Promise
     .all([getTemplate(), Data.findRepos(20), Data.findTags()])
     .then(([template, repos, tags]) => {
+
       res.send(ejs.render(template, {
         content: renderToString(<App repos={repos} tags={tags}/>),
         __data__: JSON.stringify({repos, tags})
       }));
+
     });
 });
 
 app.get('/repos.json', function (req, res) {
-  Data.findRepos().then(function (repos) {
+  Data.findRepos(100).then(function (repos) {
     res.send(repos);
   });
 });
