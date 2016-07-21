@@ -3,22 +3,18 @@ import createApp from '../client/createApp';
 import createStoreWithInitialState from '../client/createStoreWithInitialState';
 import routes from '../client/components/routes';
 
-const join = require('path').join;
-const readFile = require('fs').readFile;
 const React = require('react');
 const renderToString = require('react-dom/server').renderToString;
-const ejs = require('ejs');
 const Data = require('./Data');
 
 module.exports = function render(req, res, next) {
   Promise
     .all([
-      getTemplate(),
       Data.findRepos(20),
       Data.findTags(),
       Data.findUser(),
     ])
-    .then(([template, repos, tags, user]) => {
+    .then(([repos, tags, user]) => {
 
       match({routes, location: req.url}, (err, redirectLocation, renderProps) => {
         if (err) {
@@ -31,10 +27,20 @@ module.exports = function render(req, res, next) {
           const store = createStoreWithInitialState(state);
           const app = createApp(store, <RouterContext {...renderProps}/>);
 
-          res.send(ejs.render(template, {
-            content: renderToString(app),
-            __data__: JSON.stringify({user, repos, tags}),
-          }));
+          res.send(`
+            <html>
+            <head>
+              <meta charset="UTF-8">
+              <title>Server Rendering</title>
+              <link rel="stylesheet" href="/style.css">
+            </head>
+            <body>
+              <div id="app">${renderToString(app)}</div>
+              <script>window.__data__ = ${JSON.stringify({user, repos, tags})};</script>
+              <script src="/index.js"></script>
+            </body>
+            </html>
+          `);
 
         } else {
           res.sendStatus(404);
@@ -43,12 +49,4 @@ module.exports = function render(req, res, next) {
 
     })
     .catch(next);
-}
-
-function getTemplate() {
-  return new Promise((resolve, reject) => {
-    readFile(join(__dirname, 'index.ejs'), 'utf8', function (err, template) {
-      resolve(template);
-    });
-  });
 }
