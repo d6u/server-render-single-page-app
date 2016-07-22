@@ -1,9 +1,7 @@
 'use strict';
 
 const join = require('path').join;
-const readFile = require('fs').readFile;
 const express = require('express');
-const ejs = require('ejs');
 const Data = require('./Data');
 
 const app = express();
@@ -11,9 +9,19 @@ const app = express();
 app.use(express.static(join(__dirname, '../public')));
 
 app.get('/', function (req, res) {
-  readFile(join(__dirname, 'index.ejs'), 'utf8', function (err, template) {
-    res.send(ejs.render(template));
-  });
+  res.send(`
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>Server Rendering</title>
+      <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+      <div id="app"></div>
+      <script src="/index.js"></script>
+    </body>
+    </html>
+  `);
 });
 
 app.get('/repos.json', function (req, res) {
